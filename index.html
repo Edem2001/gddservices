@@ -1,0 +1,2258 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="GDD Service Plus - Nettoyage professionnel, décoration événementielle et formations au Bénin. Expert depuis 2015.">
+    <title>GDD Service Plus - Nettoyage, Décoration & Formation</title>
+
+    <!-- ============================================ -->
+    <!-- POLICES GOOGLE FONTS                        -->
+    <!-- ============================================ -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- ============================================ -->
+    <!-- FONTAWESOME (icônes)                        -->
+    <!-- ============================================ -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        /* ============================================ */
+        /* 1. VARIABLES (MODE CLAIR/SOMBRE)             */
+        /* ============================================ */
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f6f9fc;
+            --bg-card: #ffffff;
+            --bg-hero: #0b1120;
+            --text-primary: #0f172a;
+            --text-secondary: #334155;
+            --text-muted: #94a3b8;
+            --border-color: #e8edf4;
+            --shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+            --shadow-hover: 0 12px 48px rgba(0, 0, 0, 0.12);
+            --shadow-xl: 0 20px 60px rgba(0, 0, 0, 0.15);
+            --accent: #1a56db;
+            --accent-dark: #1e3a8a;
+            --accent-light: #dbeafe;
+            --accent-gradient: linear-gradient(135deg, #1a56db, #3b82f6);
+            --white: #ffffff;
+            --glass: rgba(255, 255, 255, 0.92);
+            --glass-dark: rgba(15, 23, 42, 0.92);
+            --hero-overlay: rgba(11, 17, 32, 0.75);
+            --whatsapp: #25d366;
+            --whatsapp-dark: #1da851;
+            --radius: 16px;
+            --radius-lg: 24px;
+            --transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-card: #1e293b;
+            --bg-hero: #0b1120;
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --text-muted: #94a3b8;
+            --border-color: #334155;
+            --shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+            --shadow-hover: 0 12px 48px rgba(0, 0, 0, 0.5);
+            --shadow-xl: 0 20px 60px rgba(0, 0, 0, 0.6);
+            --accent-light: #1e3a5f;
+            --glass: rgba(15, 23, 42, 0.92);
+            --glass-dark: rgba(15, 23, 42, 0.95);
+            --hero-overlay: rgba(11, 17, 32, 0.85);
+        }
+
+        /* ============================================ */
+        /* 2. RÉINITIALISATION & BASE                  */
+        /* ============================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            transition: background 0.4s ease, color 0.4s ease;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ============================================ */
+        /* 3. TYPOGRAPHIE                              */
+        /* ============================================ */
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            color: var(--text-primary);
+        }
+
+        h1 {
+            font-size: clamp(2.8rem, 6vw, 4.5rem);
+            line-height: 1.05;
+            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            font-size: clamp(2rem, 3.5vw, 2.8rem);
+            text-align: center;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.01em;
+        }
+
+        h2 .highlight {
+            color: var(--accent);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 650px;
+            margin: 0 auto 3rem auto;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: var(--accent-light);
+            color: var(--accent);
+            padding: 4px 16px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        /* ============================================ */
+        /* 4. BOUTONS                                  */
+        /* ============================================ */
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--accent-gradient);
+            color: #fff;
+            padding: 16px 40px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.05rem;
+            border: none;
+            cursor: pointer;
+            transition: all var(--transition);
+            box-shadow: 0 8px 32px rgba(26, 86, 219, 0.30);
+            font-family: 'Inter', sans-serif;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 12px 48px rgba(26, 86, 219, 0.45);
+        }
+
+        .btn-primary i {
+            font-size: 1rem;
+        }
+
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: transparent;
+            color: var(--accent);
+            padding: 14px 36px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.05rem;
+            border: 2px solid var(--accent);
+            cursor: pointer;
+            transition: all var(--transition);
+            font-family: 'Inter', sans-serif;
+        }
+
+        .btn-outline:hover {
+            background: var(--accent);
+            color: #fff;
+            transform: translateY(-3px);
+        }
+
+        .btn-white {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #fff;
+            color: var(--accent);
+            padding: 16px 40px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.05rem;
+            border: none;
+            cursor: pointer;
+            transition: all var(--transition);
+            font-family: 'Inter', sans-serif;
+        }
+
+        .btn-white:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 12px 40px rgba(255, 255, 255, 0.25);
+        }
+
+        .btn-sm {
+            padding: 10px 24px;
+            font-size: 0.85rem;
+        }
+
+        /* ============================================ */
+        /* 5. HEADER / NAVIGATION                      */
+        /* ============================================ */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+            transition: all var(--transition);
+        }
+
+        header.scrolled {
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        [data-theme="dark"] header.scrolled {
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+        }
+
+        /* --- LOGO (MODIFIABLE) --- */
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 1.2rem;
+            color: var(--text-primary);
+        }
+
+        /* 
+            ==============================================
+            LOGO IMAGE : MODIFIE ICI
+            ==============================================
+        */
+        .logo img {
+            height: 38px;
+            width: auto;
+        }
+
+        .logo .blue {
+            color: var(--accent);
+        }
+
+        .logo .tagline {
+            font-size: 0.55rem;
+            font-weight: 400;
+            color: var(--text-muted);
+            display: block;
+            letter-spacing: 0.3px;
+        }
+
+        /* --- MENU --- */
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 28px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            transition: color var(--transition);
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links .btn-primary {
+            padding: 8px 22px;
+            font-size: 0.8rem;
+        }
+
+        /* --- BURGER --- */
+        .burger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 4px;
+            background: none;
+            border: none;
+            position: relative;
+            z-index: 1001;
+        }
+
+        .burger span {
+            display: block;
+            width: 28px;
+            height: 3px;
+            background: var(--text-primary);
+            border-radius: 3px;
+            transition: all var(--transition);
+        }
+
+        .burger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 6px);
+        }
+
+        .burger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .burger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -6px);
+        }
+
+        /* ============================================ */
+        /* 6. MENU MOBILE AVEC TOGGLE JOUR/NUIT        */
+        /* ============================================ */
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 28px;
+            align-items: center;
+        }
+
+        /* Toggle dans le menu mobile */
+        .mobile-theme-toggle {
+            display: none;
+            align-items: center;
+            gap: 12px;
+            padding: 8px 16px;
+            background: var(--bg-secondary);
+            border-radius: 50px;
+            border: 1px solid var(--border-color);
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            transition: all var(--transition);
+            font-family: 'Inter', sans-serif;
+        }
+
+        .mobile-theme-toggle:hover {
+            background: var(--accent-light);
+            color: var(--accent);
+        }
+
+        .mobile-theme-toggle i {
+            font-size: 1rem;
+        }
+
+        /* ============================================ */
+        /* 7. HERO (ACCUEIL)                           */
+        /* ============================================ */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding: 120px 0 80px 0;
+            background: var(--bg-hero);
+            overflow: hidden;
+        }
+
+        /* 
+            ==============================================
+            IMAGE DE FOND HERO : MODIFIE ICI
+            ==============================================
+        */
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: url('https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1920&h=1080&fit=crop&crop=center') no-repeat center center / cover;
+            z-index: 0;
+        }
+
+        .hero-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--hero-overlay);
+        }
+
+        .hero-particles {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .hero-particles span {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: rgba(59, 130, 246, 0.3);
+            border-radius: 50%;
+            animation: float-particle 20s infinite linear;
+        }
+
+        .hero-particles span:nth-child(1) {
+            top: 20%;
+            left: 10%;
+            animation-duration: 25s;
+        }
+        .hero-particles span:nth-child(2) {
+            top: 60%;
+            left: 80%;
+            animation-duration: 18s;
+            width: 10px;
+            height: 10px;
+        }
+        .hero-particles span:nth-child(3) {
+            top: 40%;
+            left: 50%;
+            animation-duration: 22s;
+            width: 4px;
+            height: 4px;
+        }
+        .hero-particles span:nth-child(4) {
+            top: 75%;
+            left: 20%;
+            animation-duration: 28s;
+            width: 8px;
+            height: 8px;
+        }
+        .hero-particles span:nth-child(5) {
+            top: 15%;
+            left: 70%;
+            animation-duration: 20s;
+            width: 5px;
+            height: 5px;
+        }
+
+        @keyframes float-particle {
+            0% {
+                transform: translateY(0) translateX(0) scale(1);
+                opacity: 0.4;
+            }
+            25% {
+                transform: translateY(-80px) translateX(30px) scale(1.2);
+                opacity: 0.8;
+            }
+            50% {
+                transform: translateY(-160px) translateX(-20px) scale(0.8);
+                opacity: 0.4;
+            }
+            75% {
+                transform: translateY(-240px) translateX(40px) scale(1.4);
+                opacity: 0.9;
+            }
+            100% {
+                transform: translateY(-320px) translateX(-10px) scale(1);
+                opacity: 0.2;
+            }
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+        }
+
+        .hero-content {
+            max-width: 700px;
+        }
+
+        .hero-content .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(59, 130, 246, 0.15);
+            backdrop-filter: blur(8px);
+            color: #93c5fd;
+            padding: 6px 20px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .hero-content .hero-badge i {
+            color: #60a5fa;
+        }
+
+        .hero-content h1 {
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+
+        .hero-content h1 .highlight {
+            color: #60a5fa;
+            position: relative;
+        }
+
+        .hero-content h1 .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: 4px;
+            left: 0;
+            right: 0;
+            height: 14px;
+            background: rgba(96, 165, 250, 0.15);
+            border-radius: 4px;
+            z-index: -1;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 36px;
+            max-width: 550px;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 56px;
+            margin-top: 56px;
+            padding-top: 32px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .hero-stats .stat {
+            text-align: left;
+        }
+
+        .hero-stats .stat-number {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 2.4rem;
+            color: #60a5fa;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-stats .stat-label {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* ============================================ */
+        /* 8. SECTIONS COMMUNES                        */
+        /* ============================================ */
+        section {
+            padding: 100px 0;
+        }
+
+        .section-bg {
+            background: var(--bg-secondary);
+            transition: background 0.4s ease;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header .section-badge {
+            margin-bottom: 8px;
+        }
+
+        /* ============================================ */
+        /* 9. SERVICES                                 */
+        /* ============================================ */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+        }
+
+        .service-card {
+            background: var(--bg-card);
+            padding: 40px 32px;
+            border-radius: var(--radius-lg);
+            text-align: center;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+            transition: all var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--accent-gradient);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform var(--transition);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .service-card .icon {
+            width: 80px;
+            height: 80px;
+            background: var(--accent-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px auto;
+            font-size: 2.2rem;
+            color: var(--accent);
+            transition: all var(--transition);
+        }
+
+        .service-card:hover .icon {
+            background: var(--accent-gradient);
+            color: #fff;
+            transform: scale(1.05) rotate(-5deg);
+        }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+
+        .service-card p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .service-card .service-tag {
+            display: inline-block;
+            margin-top: 16px;
+            padding: 4px 16px;
+            background: var(--accent-light);
+            color: var(--accent);
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        /* ============================================ */
+        /* 10. VALEURS                                 */
+        /* ============================================ */
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .value-card {
+            text-align: center;
+            padding: 32px 20px;
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            border: 1px solid var(--border-color);
+            transition: all var(--transition);
+        }
+
+        .value-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .value-card .value-icon {
+            font-size: 2.4rem;
+            color: var(--accent);
+            margin-bottom: 12px;
+        }
+
+        .value-card h4 {
+            font-size: 1.1rem;
+            margin-bottom: 6px;
+        }
+
+        .value-card p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* ============================================ */
+        /* 11. CHIFFRES CLÉS                          */
+        /* ============================================ */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .stats-card {
+            text-align: center;
+            padding: 32px 20px;
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow);
+            transition: all var(--transition);
+        }
+
+        .stats-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .stats-card .stats-number {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 900;
+            color: var(--accent);
+            line-height: 1.2;
+        }
+
+        .stats-card .stats-label {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+
+        /* ============================================ */
+        /* 12. À PROPOS                                */
+        /* ============================================ */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        /* 
+            ==============================================
+            IMAGE À PROPOS : MODIFIE ICI
+            ==============================================
+        */
+        .about-image img {
+            width: 100%;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-xl);
+            aspect-ratio: 4/3;
+            object-fit: cover;
+        }
+
+        .about-image .about-experience {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--accent);
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 50px;
+            margin-top: -30px;
+            margin-left: 30px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            box-shadow: 0 8px 32px rgba(26, 86, 219, 0.3);
+            position: relative;
+            z-index: 2;
+        }
+
+        .about-content h3 {
+            font-size: 2rem;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+        }
+
+        .about-content h3 .highlight {
+            color: var(--accent);
+        }
+
+        .about-content p {
+            margin-bottom: 16px;
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 28px;
+        }
+
+        .about-features .feature {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 500;
+            color: var(--text-primary);
+            padding: 10px 16px;
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        .about-features .feature i {
+            color: var(--accent);
+            font-size: 1.1rem;
+        }
+
+        /* ============================================ */
+        /* 13. RÉALISATIONS (GALERIE HORIZONTALE)      */
+        /* ============================================ */
+        .gallery-wrapper {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gallery-scroll {
+            display: flex;
+            gap: 24px;
+            overflow-x: auto;
+            padding: 16px 4px 32px 4px;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent) var(--border-color);
+        }
+
+        .gallery-scroll::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .gallery-scroll::-webkit-scrollbar-track {
+            background: var(--border-color);
+            border-radius: 10px;
+        }
+
+        .gallery-scroll::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 10px;
+        }
+
+        /* 
+            ==============================================
+            IMAGES DE LA GALERIE : MODIFIE ICI
+            ==============================================
+        */
+        .gallery-item {
+            flex: 0 0 340px;
+            scroll-snap-align: start;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all var(--transition);
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.03) translateY(-4px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+        }
+
+        .gallery-item .gallery-info {
+            padding: 20px 24px 24px 24px;
+        }
+
+        .gallery-item .gallery-info h4 {
+            font-size: 1.1rem;
+            margin-bottom: 4px;
+            color: var(--text-primary);
+        }
+
+        .gallery-item .gallery-info p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .gallery-item .gallery-info .gallery-tag {
+            display: inline-block;
+            margin-top: 8px;
+            padding: 2px 14px;
+            background: var(--accent-light);
+            color: var(--accent);
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+
+        .gallery-scroll-hint {
+            text-align: center;
+            margin-top: 8px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            animation: pulse-hint 2s ease-in-out infinite;
+        }
+
+        .gallery-scroll-hint i {
+            margin-right: 8px;
+        }
+
+        @keyframes pulse-hint {
+            0%,
+            100% {
+                opacity: 0.4;
+                transform: translateX(0);
+            }
+            50% {
+                opacity: 1;
+                transform: translateX(8px);
+            }
+        }
+
+        /* ============================================ */
+        /* 14. CONTACT                                 */
+        /* ============================================ */
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 50px;
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            padding: 50px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+        }
+
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+
+        .contact-info>p {
+            color: var(--text-secondary);
+            margin-bottom: 28px;
+            font-size: 1.05rem;
+        }
+
+        .contact-info .info-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 18px;
+        }
+
+        .contact-info .info-item i {
+            width: 48px;
+            height: 48px;
+            background: var(--accent-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+            font-size: 1.1rem;
+            flex-shrink: 0;
+            transition: all var(--transition);
+        }
+
+        .contact-info .info-item:hover i {
+            background: var(--accent);
+            color: #fff;
+            transform: scale(1.05);
+        }
+
+        .contact-info .info-item .label {
+            font-weight: 600;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .contact-info .info-item .value {
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .contact-info .contact-social {
+            display: flex;
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        .contact-info .contact-social a {
+            width: 44px;
+            height: 44px;
+            background: var(--bg-secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            transition: all var(--transition);
+            border: 1px solid var(--border-color);
+            font-size: 1.1rem;
+        }
+
+        .contact-info .contact-social a:hover {
+            background: var(--accent);
+            color: #fff;
+            border-color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        /* --- Formulaire --- */
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contact-form .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .contact-form label {
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--text-primary);
+        }
+
+        .contact-form input,
+        .contact-form select,
+        .contact-form textarea {
+            padding: 14px 18px;
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            transition: all var(--transition);
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+        }
+
+        .contact-form input:focus,
+        .contact-form select:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px rgba(26, 86, 219, 0.08);
+            background: var(--bg-primary);
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .contact-form .btn-primary {
+            align-self: flex-start;
+        }
+
+        /* ============================================ */
+        /* 15. BOUTON WHATSAPP FLOTTANT                */
+        /* ============================================ */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 10px;
+        }
+
+        .whatsapp-float .whatsapp-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 64px;
+            height: 64px;
+            background: #25d366;
+            border-radius: 50%;
+            color: #fff;
+            font-size: 2.2rem;
+            box-shadow: 0 8px 32px rgba(37, 211, 102, 0.35);
+            transition: all var(--transition);
+            border: none;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .whatsapp-float .whatsapp-btn:hover {
+            transform: scale(1.08) rotate(-5deg);
+            box-shadow: 0 12px 48px rgba(37, 211, 102, 0.50);
+        }
+
+        .whatsapp-float .whatsapp-btn .notification-dot {
+            position: absolute;
+            top: 4px;
+            right: 4px;
+            width: 16px;
+            height: 16px;
+            background: #ef4444;
+            border-radius: 50%;
+            border: 2px solid #fff;
+            animation: pulse-dot 1.5s ease-in-out infinite;
+        }
+
+        @keyframes pulse-dot {
+            0%,
+            100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.3);
+            }
+        }
+
+        /* ============================================ */
+        /* 16. FOOTER                                  */
+        /* ============================================ */
+        footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
+            padding: 70px 0 30px 0;
+            transition: background 0.4s ease;
+        }
+
+        footer .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 40px;
+        }
+
+        footer h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 18px;
+            color: var(--text-primary);
+        }
+
+        footer .footer-logo {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 1.6rem;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+        }
+
+        footer .footer-logo .blue {
+            color: var(--accent);
+        }
+
+        footer .footer-about p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            max-width: 350px;
+        }
+
+        footer .footer-social {
+            display: flex;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        footer .footer-social a {
+            width: 42px;
+            height: 42px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            transition: all var(--transition);
+            font-size: 1.1rem;
+        }
+
+        footer .footer-social a:hover {
+            background: var(--accent);
+            color: #fff;
+            border-color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        footer .footer-links ul {
+            list-style: none;
+        }
+
+        footer .footer-links ul li {
+            margin-bottom: 10px;
+        }
+
+        footer .footer-links ul li a {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            transition: color var(--transition);
+        }
+
+        footer .footer-links ul li a:hover {
+            color: var(--accent);
+        }
+
+        footer .footer-links ul li i {
+            color: var(--accent);
+            width: 20px;
+        }
+
+        footer .footer-bottom {
+            border-top: 1px solid var(--border-color);
+            padding-top: 24px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        footer .footer-bottom a {
+            color: var(--text-muted);
+            transition: color var(--transition);
+        }
+
+        footer .footer-bottom a:hover {
+            color: var(--accent);
+        }
+
+        /* ============================================ */
+        /* 17. RESPONSIVE                              */
+        /* ============================================ */
+        @media (max-width: 1024px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .about-features {
+                justify-items: center;
+            }
+
+            .about-image .about-experience {
+                margin-left: 0;
+                justify-content: center;
+            }
+
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+                padding: 32px;
+            }
+
+            footer .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 32px;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            /* Menu mobile */
+            .nav-links {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: var(--glass);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                justify-content: center;
+                gap: 20px;
+                transform: translateX(100%);
+                transition: transform var(--transition);
+                padding: 40px;
+                align-items: center;
+            }
+
+            [data-theme="dark"] .nav-links {
+                background: var(--glass-dark);
+            }
+
+            .nav-links.open {
+                transform: translateX(0);
+            }
+
+            .nav-links a {
+                font-size: 1.1rem;
+            }
+
+            .burger {
+                display: flex;
+            }
+
+            /* Toggle dans le menu mobile */
+            .mobile-theme-toggle {
+                display: flex;
+                margin-top: 10px;
+            }
+
+            /* Cache l'ancien toggle */
+            .theme-toggle-desktop {
+                display: none !important;
+            }
+
+            .hero {
+                min-height: 90vh;
+                padding: 100px 0 60px 0;
+            }
+
+            .hero-content {
+                text-align: center;
+            }
+
+            .hero-content p {
+                margin: 0 auto 32px auto;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-stats {
+                justify-content: center;
+                gap: 24px;
+                flex-wrap: wrap;
+            }
+
+            .hero-stats .stat {
+                text-align: center;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-item {
+                flex: 0 0 270px;
+            }
+
+            .gallery-item img {
+                height: 200px;
+            }
+
+            .contact-wrapper {
+                padding: 24px;
+            }
+
+            .contact-form .btn-primary {
+                align-self: stretch;
+                text-align: center;
+                justify-content: center;
+            }
+
+            footer .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .about-features {
+                grid-template-columns: 1fr;
+                justify-items: center;
+                width: 100%;
+            }
+
+            .about-features .feature {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 16px;
+            }
+
+            .stats-card .stats-number {
+                font-size: 2rem;
+            }
+
+            .values-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .logo {
+                font-size: 1rem;
+            }
+
+            .logo .tagline {
+                font-size: 0.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hero-buttons .btn-primary,
+            .hero-buttons .btn-outline,
+            .hero-buttons .btn-white {
+                width: 100%;
+                text-align: center;
+                justify-content: center;
+            }
+
+            .gallery-item {
+                flex: 0 0 230px;
+            }
+
+            .gallery-item img {
+                height: 160px;
+            }
+
+            .whatsapp-float .whatsapp-btn {
+                width: 56px;
+                height: 56px;
+                font-size: 1.8rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-wrapper {
+                padding: 16px;
+            }
+
+            .logo {
+                font-size: 0.9rem;
+            }
+
+            .logo .tagline {
+                display: none;
+            }
+        }
+
+        /* ============================================ */
+        /* 18. ANIMATIONS                              */
+        /* ============================================ */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .delay-1 {
+            transition-delay: 0.1s;
+        }
+        .delay-2 {
+            transition-delay: 0.2s;
+        }
+        .delay-3 {
+            transition-delay: 0.3s;
+        }
+        .delay-4 {
+            transition-delay: 0.4s;
+        }
+        .delay-5 {
+            transition-delay: 0.5s;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================ -->
+    <!-- HEADER / NAVIGATION                         -->
+    <!-- ============================================ -->
+    <header>
+        <nav class="navbar container">
+            <!-- ========================================== -->
+            <!-- LOGO : MODIFIE ICI                         -->
+            <!-- ========================================== -->
+            <a href="#home" class="logo">
+                <!-- 
+                    ==============================================
+                    LOGO IMAGE : MODIFIE ICI
+                    ==============================================
+                    Pour utiliser une image :
+                    1. Décommente la ligne ci-dessous
+                    2. Remplace "images/logo-gdd.png" par le chemin de ton image
+                    3. Commente ou supprime la ligne avec le texte
+                -->
+                <img src="logo-gdd.png" alt="GDD Service Plus"> 
+                <span>
+                    GDD<span class="blue">Service</span>+
+                    <span class="tagline">Expertise &amp; Qualité</span>
+                </span>
+            </a>
+
+            <button class="burger" id="burgerBtn" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Accueil</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">À propos</a></li>
+                <li><a href="#gallery">Réalisations</a></li>
+                <li><a href="#contact" class="btn-primary btn-sm">Contact</a></li>
+                <!-- Toggle jour/nuit dans le menu mobile -->
+                <li>
+                    <button class="mobile-theme-toggle" id="mobileThemeToggle">
+                        <i class="fas fa-sun" id="mobileThemeIcon"></i>
+                        <span id="mobileThemeLabel">Thème</span>
+                    </button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ============================================ -->
+    <!-- HERO (ACCUEIL)                               -->
+    <!-- ============================================ -->
+    <section class="hero" id="home">
+        <!-- 
+            ==============================================
+            IMAGE DE FOND HERO : MODIFIE ICI
+            ==============================================
+        -->
+        <div class="hero-bg" style="background: url('https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1920&h=1080&fit=crop&crop=center') no-repeat center center / cover;"></div>
+
+        <div class="hero-particles">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fas fa-award"></i> Expert depuis 2015
+                </div>
+                <h1>
+                    L'expertise au service de <br>
+                    <span class="highlight">vos besoins</span>
+                </h1>
+                <p>
+                    Nettoyage professionnel, décoration événementielle et formations 
+                    pour particuliers, entreprises et institutions au Bénin.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn-primary">
+                        <i class="fas fa-paper-plane"></i> Demander un devis
+                    </a>
+                    <a href="#services" class="btn-white">
+                        <i class="fas fa-chevron-right"></i> Nos services
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <div class="stat-number">2+</div>
+                        <div class="stat-label">Années d'expertise</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">Clients satisfaits</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">4.9/5</div>
+                        <div class="stat-label">Avis clients</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- SERVICES                                     -->
+    <!-- ============================================ -->
+    <section id="services" class="section-bg">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Nos prestations</span>
+                <h2>Nos <span class="highlight">services</span></h2>
+                <p class="section-subtitle">
+                    Des prestations professionnelles, fiables et de qualité pour répondre à tous vos besoins.
+                </p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card fade-up delay-1">
+                    <div class="icon"><i class="fas fa-broom"></i></div>
+                    <h3>Nettoyage &amp; Entretien</h3>
+                    <p>
+                        Bureaux, résidences, entreprises, immeubles, espaces verts et autres locaux. 
+                        Un service sur mesure pour des espaces impeccables.
+                    </p>
+                    <span class="service-tag">Sur devis</span>
+                </div>
+                <div class="service-card fade-up delay-2">
+                    <div class="icon"><i class="fas fa-palette"></i></div>
+                    <h3>Décoration Événementielle</h3>
+                    <p>
+                        Mariages, anniversaires, conférences, cérémonies, événements professionnels 
+                        et privés. Nous créons l'ambiance parfaite.
+                    </p>
+                    <span class="service-tag">Sur mesure</span>
+                </div>
+                <div class="service-card fade-up delay-3">
+                    <div class="icon"><i class="fas fa-chalkboard-user"></i></div>
+                    <h3>Formations Professionnelles</h3>
+                    <p>
+                        Renforcement des compétences pour particuliers, étudiants et entreprises 
+                        dans plusieurs domaines clés.
+                    </p>
+                    <span class="service-tag">Certifié</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- VALEURS                                     -->
+    <!-- ============================================ -->
+    <section>
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Nos valeurs</span>
+                <h2>Notre <span class="highlight">engagement</span></h2>
+                <p class="section-subtitle">
+                    Des valeurs qui guident notre action au quotidien.
+                </p>
+            </div>
+            <div class="values-grid">
+                <div class="value-card fade-up delay-1">
+                    <div class="value-icon"><i class="fas fa-handshake"></i></div>
+                    <h4>Professionnalisme</h4>
+                    <p>Une équipe qualifiée et rigoureuse pour des prestations irréprochables.</p>
+                </div>
+                <div class="value-card fade-up delay-2">
+                    <div class="value-icon"><i class="fas fa-clock"></i></div>
+                    <h4>Ponctualité</h4>
+                    <p>Le respect des horaires est une de nos priorités absolues.</p>
+                </div>
+                <div class="value-card fade-up delay-3">
+                    <div class="value-icon"><i class="fas fa-lightbulb"></i></div>
+                    <h4>Innovation</h4>
+                    <p>Des solutions modernes et adaptées aux besoins de nos clients.</p>
+                </div>
+                <div class="value-card fade-up delay-4">
+                    <div class="value-icon"><i class="fas fa-star"></i></div>
+                    <h4>Satisfaction totale</h4>
+                    <p>La satisfaction de nos clients est notre plus belle récompense.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- CHIFFRES CLÉS                               -->
+    <!-- ============================================ -->
+    <section class="section-bg">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Chiffres clés</span>
+                <h2>GDD Service Plus en <span class="highlight">quelques chiffres</span></h2>
+                <p class="section-subtitle">
+                    Des résultats qui parlent d'eux-mêmes.
+                </p>
+            </div>
+            <div class="stats-grid">
+                <div class="stats-card fade-up delay-1">
+                    <div class="stats-number">8</div>
+                    <div class="stats-label">Années d'expertise</div>
+                </div>
+                <div class="stats-card fade-up delay-2">
+                    <div class="stats-number">500+</div>
+                    <div class="stats-label">Clients accompagnés</div>
+                </div>
+                <div class="stats-card fade-up delay-3">
+                    <div class="stats-number">98%</div>
+                    <div class="stats-label">Taux de satisfaction</div>
+                </div>
+                <div class="stats-card fade-up delay-4">
+                    <div class="stats-number">24h</div>
+                    <div class="stats-label">Délai de réponse</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- À PROPOS                                    -->
+    <!-- ============================================ -->
+    <section id="about">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Qui sommes-nous ?</span>
+                <h2>À <span class="highlight">propos</span></h2>
+                <p class="section-subtitle">
+                    Découvrez l'histoire, les valeurs et l'engagement de GDD Service Plus.
+                </p>
+            </div>
+            <div class="about-grid">
+                <div class="about-image">
+                    <!-- 
+                        ==============================================
+                        IMAGE À PROPOS : MODIFIE ICI
+                        ==============================================
+                    -->
+                    <img src="apropos.jpg" alt="GDD Service Plus">
+                    <div class="about-experience">
+                        <i class="fas fa-award"></i> 8 ans d'expérience
+                    </div>
+                </div>
+                <div class="about-content">
+                    <h3>L'expertise qui fait la <span class="highlight">différence</span></h3>
+                    <p>
+                        <strong>GDD Service Plus</strong> est votre partenaire de confiance pour des prestations 
+                        professionnelles, fiables et de qualité.
+                    </p>
+                    <p>
+                        Notre priorité est d'offrir des solutions adaptées aux besoins de chaque client 
+                        grâce à une équipe dynamique, qualifiée et soucieuse de l'excellence.
+                    </p>
+                    <div class="about-features">
+                        <div class="feature"><i class="fas fa-check-circle"></i> Professionnalisme</div>
+                        <div class="feature"><i class="fas fa-check-circle"></i> Ponctualité</div>
+                        <div class="feature"><i class="fas fa-check-circle"></i> Innovation</div>
+                        <div class="feature"><i class="fas fa-check-circle"></i> Satisfaction totale</div>
+                        <div class="feature"><i class="fas fa-check-circle"></i> Normes de qualité</div>
+                        <div class="feature"><i class="fas fa-check-circle"></i> Équipe dynamique</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- RÉALISATIONS (GALERIE HORIZONTALE)          -->
+    <!-- ============================================ -->
+<!-- ============================================ -->
+<!-- RÉALISATIONS (GALERIE HORIZONTALE)          -->
+<!-- ============================================ -->
+<section id="gallery" class="section-bg">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-badge">Nos travaux</span>
+            <h2>Nos <span class="highlight">réalisations</span></h2>
+            <p class="section-subtitle">
+                Un aperçu de nos interventions en nettoyage, décoration et formation.
+            </p>
+        </div>
+        <div class="gallery-wrapper">
+            <div class="gallery-scroll" id="galleryScroll">
+                
+                <!-- ========================================== -->
+                <!-- IMAGE 1 - Remplace par ton chemin         -->
+                <!-- ========================================== -->
+                <div class="gallery-item">
+                    <img src="nettoyagedebureau.jpg" alt="Nettoyage de bureaux">
+                    <div class="gallery-info">
+                        <h4>Nettoyage de bureaux</h4>
+                        <p>Entretien professionnel d'open-space</p>
+                        <span class="gallery-tag">Nettoyage</span>
+                    </div>
+                </div>
+                
+                <!-- ========================================== -->
+                <!-- IMAGE 2 - Remplace par ton chemin         -->
+                <!-- ========================================== -->
+                <div class="gallery-item">
+                    <img src="decorationmariage.jpg" alt="Décoration événementielle">
+                    <div class="gallery-info">
+                        <h4>Décoration de mariage</h4>
+                        <p>Ambiance élégante et personnalisée</p>
+                        <span class="gallery-tag">Décoration</span>
+                    </div>
+                </div>
+                
+                <!-- ========================================== -->
+                <!-- IMAGE 3 - Remplace par ton chemin         -->
+                <!-- ========================================== -->
+                <div class="gallery-item">
+                    <img src="formationentreprise.jpg" alt="Formation professionnelle">
+                    <div class="gallery-info">
+                        <h4>Formation en entreprise</h4>
+                        <p>Renforcement des compétences</p>
+                        <span class="gallery-tag">Formation</span>
+                    </div>
+                </div>
+                
+                <!-- ========================================== -->
+                <!-- IMAGE 4 - Remplace par ton chemin         -->
+                <!-- ========================================== -->
+                <div class="gallery-item">
+                    <img src="nettoyagedemoquette.jpg" alt="Nettoyage de moquette">
+                    <div class="gallery-info">
+                        <h4>Nettoyage de moquette</h4>
+                        <p>Extraction des taches incrustées</p>
+                        <span class="gallery-tag">Nettoyage</span>
+                    </div>
+                </div>
+                
+                <!-- ========================================== -->
+                <!-- IMAGE 5 - Remplace par ton chemin         -->
+                <!-- ========================================== -->
+                <div class="gallery-item">
+                    <img src="nettoyagedecuisine.jpg" alt="Nettoyage de cuisine">
+                    <div class="gallery-info">
+                        <h4>Nettoyage de cuisine</h4>
+                        <p>Désinfection et brillance</p>
+                        <span class="gallery-tag">Nettoyage</span>
+                    </div>
+                </div>
+                
+                <!-- ========================================== -->
+                <!-- IMAGE 6 - Remplace par ton chemin         -->
+                <!-- ========================================== -->
+                <div class="gallery-item">
+                    <img src="decorationdeconference.jpg" alt="Décoration de conférence">
+                    <div class="gallery-info">
+                        <h4>Décoration de conférence</h4>
+                        <p>Ambiance professionnelle et moderne</p>
+                        <span class="gallery-tag">Décoration</span>
+                    </div>
+                </div>
+                
+                <!-- ========================================== -->
+                <!-- IMAGE 7 - Remplace par ton chemin         -->
+                <!-- ========================================== -->
+                <div class="gallery-item">
+                    <img src="formationpratique.jpg" alt="Formation pratique">
+                    <div class="gallery-info">
+                        <h4>Formation pratique</h4>
+                        <p>Apprentissage par la pratique</p>
+                        <span class="gallery-tag">Formation</span>
+                    </div>
+                </div>
+                
+                <!-- ========================================== -->
+                <!-- IMAGE 8 - Remplace par ton chemin         -->
+                <!-- ========================================== -->
+                <div class="gallery-item">
+                    <img src="nettoyagedevitres.jpg" alt="Nettoyage de vitres">
+                    <div class="gallery-info">
+                        <h4>Nettoyage de vitres</h4>
+                        <p>Vitres sans traces</p>
+                        <span class="gallery-tag">Nettoyage</span>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="gallery-scroll-hint">
+                <i class="fas fa-arrow-right"></i> Faites défiler pour voir plus de réalisations
+            </div>
+        </div>
+    </div>
+</section>
+    <!-- ============================================ -->
+    <!-- CONTACT                                     -->
+    <!-- ============================================ -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Contactez-nous</span>
+                <h2>Parlons de votre <span class="highlight">projet</span></h2>
+                <p class="section-subtitle">
+                    Une question ? Un besoin ? Nous sommes à votre écoute.
+                </p>
+            </div>
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <h3>Contactez-nous</h3>
+                    <p>
+                        Que ce soit pour un nettoyage, une décoration ou une formation, 
+                        nous vous répondons dans les plus brefs délais.
+                    </p>
+
+                    <!-- 
+                        ==============================================
+                        COORDONNÉES : MODIFIE ICI
+                        ==============================================
+                    -->
+                    <div class="info-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <div class="label">Téléphone</div>
+                            <div class="value">+229 01 41 23 21 61</div>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <div class="label">Email</div>
+                            <div class="value">gddserviceplus@gmail.com</div>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <i class="fas fa-location-dot"></i>
+                        <div>
+                            <div class="label">Adresse</div>
+                            <div class="value">Cotonou, Bénin</div>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <div class="label">Horaires</div>
+                            <div class="value">Lun - Ven : 8h - 19h | Sam : 9h - 14h</div>
+                        </div>
+                    </div>
+
+                    <div class="contact-social">
+                        <a href="https://www.fb.com/l/6lp1kJRRR" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Nom &amp; prénom *</label>
+                        <input type="text" id="name" placeholder="Votre nom" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" placeholder="votre@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Téléphone</label>
+                        <input type="tel" id="phone" placeholder="+229 97 00 00 00">
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Sujet</label>
+                        <select id="subject">
+                            <option value="nettoyage">Nettoyage &amp; Entretien</option>
+                            <option value="decoration">Décoration événementielle</option>
+                            <option value="formation">Formation professionnelle</option>
+                            <option value="autre">Autre demande</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message *</label>
+                        <textarea id="message" placeholder="Décrivez votre besoin en détail..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary">
+                        <i class="fas fa-paper-plane"></i> Envoyer ma demande
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- FOOTER                                      -->
+    <!-- ============================================ -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        GDD<span class="blue">Service</span> Plus
+                    </div>
+                    <p>
+                        L'expertise au service de vos besoins : nettoyage professionnel, 
+                        décoration événementielle et formations de qualité.
+                    </p>
+                    <div class="footer-social">
+                        <a href="https://www.fb.com/l/6lp1kJRRR" target="_blank" aria-label="Facebook"><i class="fab fa-fac"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="#home">Accueil</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#about">À propos</a></li>
+                        <li><a href="#gallery">Réalisations</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Nos services</h4>
+                    <ul>
+                        <li><a href="#services">Nettoyage &amp; Entretien</a></li>
+                        <li><a href="#services">Décoration événementielle</a></li>
+                        <li><a href="#services">Formations professionnelles</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> +229 01 41 23 21 61</li>
+                        <li><i class="fas fa-envelope"></i> gddserviceplus@gmail.com</li>
+                        <li><i class="fas fa-map-pin"></i> Cotonou, Bénin</li>
+                        <li><i class="fas fa-clock"></i> Lun-Ven 8h-19h</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                &copy; 2026 GDD Service Plus - Tous droits réservés.
+                <span style="margin:0 12px;">|</span>
+                <!-- 
+                    ==============================================
+                    LIENS VERS LES PAGES MENTIONS LÉGALES ET CGU
+                    ==============================================
+                    Ces liens pointent vers des pages séparées.
+                    Crée les fichiers : mentions-legales.html et politique-confidentialite.html
+                -->
+                <a href="mentions-legales.html">Mentions légales</a>
+                <span style="margin:0 12px;">|</span>
+                <a href="politique-confidentialite.html">Politique de confidentialité</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============================================ -->
+    <!-- BOUTON WHATSAPP FLOTTANT                     -->
+    <!-- ============================================ -->
+    <div class="whatsapp-float" id="whatsappFloat">
+        <a href="#" id="whatsappLink" class="whatsapp-btn" target="_blank" rel="noopener">
+            <i class="fab fa-whatsapp"></i>
+            <span class="notification-dot"></span>
+        </a>
+    </div>
+
+
+    <!-- ============================================ -->
+    <!-- JAVASCRIPT                                   -->
+    <!-- ============================================ -->
+    <script>
+        // =============================================
+        // 1. NUMÉRO WHATSAPP (MODIFIABLE)
+        // =============================================
+        const WHATSAPP_NUMBER = '2290141232161';
+        const DEFAULT_MESSAGE = 'Bonjour GDD Service Plus, je souhaite obtenir plus d\'informations sur vos services. Merci !';
+
+        // =============================================
+        // 2. MENU BURGER
+        // =============================================
+        const burgerBtn = document.getElementById('burgerBtn');
+        const navLinks = document.getElementById('navLinks');
+
+        burgerBtn.addEventListener('click', function() {
+            this.classList.toggle('active');
+            navLinks.classList.toggle('open');
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                burgerBtn.classList.remove('active');
+                navLinks.classList.remove('open');
+            });
+        });
+
+        // =============================================
+        // 3. HEADER SCROLL
+        // =============================================
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 30) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // =============================================
+        // 4. ANIMATION SCROLL (Fade Up)
+        // =============================================
+        const fadeElements = document.querySelectorAll('.fade-up');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.15,
+            rootMargin: '0px 0px -30px 0px'
+        });
+
+        fadeElements.forEach(el => observer.observe(el));
+
+        // =============================================
+        // 5. MODE JOUR / NUIT (mobile & desktop)
+        // =============================================
+        const html = document.documentElement;
+        const mobileThemeToggle = document.getElementById('mobileThemeToggle');
+        const mobileThemeIcon = document.getElementById('mobileThemeIcon');
+        const mobileThemeLabel = document.getElementById('mobileThemeLabel');
+
+        // Charger la préférence sauvegardée
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        html.setAttribute('data-theme', savedTheme);
+        updateMobileThemeUI(savedTheme);
+
+        // Toggle via le bouton dans le menu mobile
+        mobileThemeToggle.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateMobileThemeUI(newTheme);
+        });
+
+        function updateMobileThemeUI(theme) {
+            if (theme === 'dark') {
+                mobileThemeIcon.className = 'fas fa-moon';
+                mobileThemeLabel.textContent = 'Nuit';
+            } else {
+                mobileThemeIcon.className = 'fas fa-sun';
+                mobileThemeLabel.textContent = 'Jour';
+            }
+        }
+
+        // =============================================
+        // 6. FORMULAIRE DE CONTACT
+        // =============================================
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const message = document.getElementById('message').value.trim();
+
+            if (!name || !email || !message) {
+                alert('⚠️ Veuillez remplir tous les champs obligatoires (*).');
+                return;
+            }
+
+            alert('✅ Merci ' + name + ' ! Votre demande a bien été envoyée. Nous vous répondrons dans les plus brefs délais.');
+            contactForm.reset();
+        });
+
+        // =============================================
+        // 7. WHATSAPP
+        // =============================================
+        const whatsappLink = document.getElementById('whatsappLink');
+        const msg = encodeURIComponent(DEFAULT_MESSAGE);
+        whatsappLink.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`;
+
+        // =============================================
+        // 8. SCROLL HORIZONTAL INDICATEUR
+        // =============================================
+        const galleryScroll = document.getElementById('galleryScroll');
+        const hint = document.querySelector('.gallery-scroll-hint');
+
+        if (galleryScroll) {
+            galleryScroll.addEventListener('scroll', function() {
+                const maxScroll = this.scrollWidth - this.clientWidth;
+                if (this.scrollLeft >= maxScroll - 10) {
+                    hint.style.opacity = '0.3';
+                } else {
+                    hint.style.opacity = '1';
+                }
+            });
+        }
+
+        console.log('✅ Site GDD Service Plus chargé avec succès !');
+        console.log('📌 RÉCAPITULATIF DES IMAGES À MODIFIER :');
+        console.log('   1. Logo : ligne ~290 (décommenter la ligne <img>)');
+        console.log('   2. Image de fond Hero : ligne ~478 (background: url(...))');
+        console.log('   3. Image À propos : ligne ~758 (src="...")');
+        console.log('   4. Galerie (8 images) : lignes ~806-870 (src="...")');
+        console.log('📌 Coordonnées à modifier :');
+        console.log('   - Téléphone : +229 01 41 23 21 61');
+        console.log('   - Email : gddserviceplus@gmail.com');
+        console.log('   - Adresse : Cotonou, Bénin');
+        console.log('   - WhatsApp : 2290141232161');
+        console.log('📌 Pages séparées à créer :');
+        console.log('   - mentions-legales.html');
+        console.log('   - politique-confidentialite.html');
+    </script>
+
+</body>
+</html>
